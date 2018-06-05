@@ -1,0 +1,8 @@
+# robots.txt for http://www.harikayedidi.com/
+
+user-agent: AhrefsBot
+disallow: / 
+
+User-Agent: Googlebot
+Allow: .js
+Allow: .css
