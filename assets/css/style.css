@@ -1166,6 +1166,7 @@ Resume Timeline
 .portfolio {
     position: relative;
     overflow: hidden;
+    max-height: 246px;
 }
 
 
