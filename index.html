@@ -581,10 +581,9 @@
     <script src="assets/js/scripts.js"></script>
     <script>
         function changeTitle(){
-            var title = document.querySelector('#job-title');
             var titles = ['Full Stack','UI', 'UX', 'Front End', 'Web'];
             var randomItem = titles[Math.floor(Math.random()*titles.length)];
-            title.innerHTML(randomItem);
+            $('#job-title').html(randomItem);
         }
     $(document).ready(function() {
         var timer = setInterval(changeTitle, 10000);
