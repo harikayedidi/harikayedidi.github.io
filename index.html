@@ -583,7 +583,7 @@
         function changeTitle(){
             var titles = ['Full Stack','UI', 'UX', 'Front End', 'Web'];
             var randomItem = titles[Math.floor(Math.random()*titles.length)];
-            $('#job-title').html(randomItem).fadeIn();
+            $('#job-title').html(randomItem).fadeIn( 1000);
         }
     $(document).ready(function() {
         var timer = setInterval(changeTitle, 5000);
