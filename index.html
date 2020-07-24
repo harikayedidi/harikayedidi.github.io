@@ -69,7 +69,7 @@
             <div class="intro-sub">Hello World!</div>
             <h4> I'm </h4>
             <h1>Harika Yedidi</span></h1>
-            <h3 class="subtitle"><span class="myellow">{ </span> Full Stack Web Developer <span class="myellow"> }</span></h3>
+            <h3 class="subtitle"><span class="myellow">{ </span> <span id="job-title">Full Stack</span> Developer <span class="myellow"> }</span></h3>
             <div class="social-icons">
                 <ul class="list-inline">
                     <li><a target="_blank" href="https://www.linkedin.com/in/harikayedidi/"><i class="fa fa-linkedin"></i></a></li>
@@ -125,7 +125,7 @@
             </a>
             <br />
             <div class="row">
-                <div class="col-md-8 col-sm-10">
+                <div class="col-md-6 col-sm-10">
                     <div class="skill-progress">
                         <div class="skill-title">
                             <h3>JavaScript</h3>
@@ -198,11 +198,20 @@
                         </div>
                         <!-- /.progress -->
                     </div>
+                    <div class="skill-progress">
+                            <div class="skill-title">
+                                <h3>Python & Django</h3>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar six-sec-ease-in-out" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
+                                </div>
+                            </div>
+                            <!-- /.progress -->
+                        </div>
                 </div>
                 <!-- /.col-md-6 -->
-                <div class="col-md-4 col-sm-10">
+                <div class="col-md-5 col-sm-10">
                     <ul class="list-check pull-right">
-                        <li>Python & Django</li>
                         <li>Node.js</li>
                         <li>D3.js & Highcharts.js</li>
                         <li>Git, SVN</li>
@@ -211,7 +220,8 @@
                         <li>SASS, Bootstrap, Bulma</li>
                         <li>Webpack, Grunt</li>
                         <li>Cypress</li>
-                        <li>Google Tag Manager, Marketo, Box & Salesforce API</li>
+                        <li>Google Analytics, Google Tag Manager, Marketo </li>
+                        <li>Zotero, Box, Salesforce, Wistia & Google translate</li>
                     </ul>
                 </div>
             </div>
@@ -432,7 +442,7 @@
                             <a href="https://www.licor.com/env/products/eddy_covariance/customize_system">
                                 <div class="portfolio">
                                     <div class="tt-overlay"></div>
-                                    <img src="assets/images/dyos.jpg" alt="image">
+                                    <img src="assets/images/dyos.png" alt="image">
                                     <div class="portfolio-info">
                                         <h3>Customized Eddy Covariance System</h3>
                                     </div>
@@ -461,6 +471,19 @@
                                         <img src="assets/images/dashboard.png" alt="image">
                                         <div class="portfolio-info">
                                             <h3>Custom Dashboard</h3>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                    </div> 
+                    <div class="portfolio-item col-xs-12 col-sm-6 col-md-4">
+                            <div class="portfolio-bg">
+                                <a href="https://www.licor.com/shop/software/es/register/">
+                                    <div class="portfolio">
+                                        <div class="tt-overlay"></div>
+                                        <img src="assets/images/es.png" alt="image">
+                                        <div class="portfolio-info">
+                                            <h3>Software Purchase Workflow</h3>
                                         </div>
                                     </div>
                                 </a>
@@ -557,7 +580,14 @@
     <script src="assets/js/floatlabels.js"></script>
     <script src="assets/js/scripts.js"></script>
     <script>
+        function changeTitle(){
+            var title = document.querySelector('#job-title');
+            var titles = ['Full Stack','UI', 'UX', 'Front End', 'Web'];
+            var randomItem = titles[Math.floor(Math.random()*titles.length)];
+            title.innerHTML(randomItem);
+        }
     $(document).ready(function() {
+        var timer = setInterval(changeTitle, 10000);
         $('.floatlabel').floatlabel();
         $('#contactForm').bootstrapValidator({
                 // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
