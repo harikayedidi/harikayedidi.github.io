@@ -69,7 +69,7 @@
             <div class="intro-sub">Hello World!</div>
             <h4> I'm </h4>
             <h1>Harika Yedidi</span></h1>
-            <h3 class="subtitle"><span class="myellow">{ </span> <span id="job-title">Full Stack</span> Developer <span class="myellow"> }</span></h3>
+            <h3 class="subtitle"><span class="myellow">{ </span> <span id="job-title">Full Stack</span><span class="myellow"> }</span> Developer</h3>
             <div class="social-icons">
                 <ul class="list-inline">
                     <li><a target="_blank" href="https://www.linkedin.com/in/harikayedidi/"><i class="fa fa-linkedin"></i></a></li>
@@ -583,10 +583,10 @@
         function changeTitle(){
             var titles = ['Full Stack','UI', 'UX', 'Front End', 'Web'];
             var randomItem = titles[Math.floor(Math.random()*titles.length)];
-            $('#job-title').html(randomItem);
+            $('#job-title').html(randomItem).fadeIn();
         }
     $(document).ready(function() {
-        var timer = setInterval(changeTitle, 10000);
+        var timer = setInterval(changeTitle, 5000);
         $('.floatlabel').floatlabel();
         $('#contactForm').bootstrapValidator({
                 // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
