@@ -349,7 +349,7 @@ ul.list-check li::before {
 }
 
 #home {
-    background: url(../images/home.jpg) no-repeat center center;
+    background: url(../images/home.png) no-repeat center center;
     -webkit-background-attachment: fixed;
     background-attachment: fixed;
     /*background-color: #999;*/
@@ -360,7 +360,8 @@ ul.list-check li::before {
 
 #home:before {
     content: "";
-    background-color: rgba(26, 30, 35, 0.85);
+    background-color: rgb(19 20 21 / 94%);
+    /*rgb(224 178 11 / 91%); rgb(69 70 72 / 91%); rgba(26, 30, 35, 0.91);*/
     position: absolute;
     top: 0;
     left: 0;
@@ -371,7 +372,7 @@ ul.list-check li::before {
 .intro {
     position: absolute;
     width: 100%;
-    top: 50%;
+    top: 40%;
     left: 0;
     text-align: center;
     -webkit-transform: translate(0%, -50%);
@@ -385,7 +386,7 @@ ul.list-check li::before {
 .intro h1 {
     font-size: 60px;
     line-height: 80px;
-    margin-bottom: 16px;
+    margin-bottom: 10px;
     color: #e7bd12;
 }
 
@@ -403,7 +404,6 @@ ul.list-check li::before {
     font-size: 24px;
     line-height: 32px;
     font-weight: 700;
-    text-transform: uppercase;
     display: block;
     margin-bottom: 20px;
 }
@@ -801,6 +801,7 @@ Resume Timeline
     position: relative;
     margin-bottom: 50px;
     min-height: 50px;
+    
 }
 
 .timeline>li:before,
@@ -905,7 +906,8 @@ Resume Timeline
         float: left;
         width: 43%;
         text-align: right;
-        border: 1px solid #eee;
+        border: 2px solid #e1e1e1;
+        background-color: #e1e1e1;
         position: relative;
     }
     .timeline-content {
@@ -1141,6 +1143,9 @@ Resume Timeline
     font-size: 22px;
 }
 
+.timeline-heading>h3{
+    color: #e7bd12;
+}
 
 /* === Work Section === */
 
@@ -1812,6 +1817,7 @@ h2.altsectitle:hover{
 h3.subtitle {
     font-size: 24px;
     line-height: 24px;
+    margin-bottom: 0.3em;
     color: #FFFFFF;
 }
 .nopadding{
