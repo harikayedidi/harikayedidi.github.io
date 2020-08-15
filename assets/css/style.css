@@ -724,22 +724,6 @@ Resume Timeline
     position: relative;
 }
 
-.resume:before {
-   /* content: "url(../../assets/images/ico/laptop_32px.png)" center no-repeat;*/
-   content: url(../../assets/images/ico/laptop.png);
-    position: absolute;
-    top: -34px;
-    width: 10px;
-    height: 10px;
-    left: 50%;
-    margin: 0  0 10px -22px;
-    /*-webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg);*/
-}
-
 .resume:after {
    /*content: url(../../assets/images/ico/laptop_32px.png);*/
     position: absolute;
@@ -749,21 +733,6 @@ Resume Timeline
     background-color: #e1e1e1;
     left: 50%;
     margin-left: -6px;
-    /*-webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg);*/
-}
-.resumeedu:before {
-   /* content: "url(../../assets/images/ico/laptop_32px.png)" center no-repeat;*/
-   content: url(../../assets/images/ico/book-open_32px.png);
-    position: absolute;
-    top: 45px;
-    width: 10px;
-    height: 10px;
-    left: 50%;
-    margin: 0  0 10px -22px;
     /*-webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
@@ -785,16 +754,6 @@ Resume Timeline
     -ms-transform: rotate(45deg);
     -o-transform: rotate(45deg);
     transform: rotate(45deg);*/
-}
-
-.timeline:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    margin-left: -1.5px;
-    background-color: #e1e1e1;
 }
 
 .timeline>li {
@@ -852,7 +811,6 @@ Resume Timeline
     display: block;
     color: #2c3e50;
     top: 0;
-    float: left;
 }
 
 .timeline>li.timeline-inverted>.timeline-panel {
@@ -897,6 +855,46 @@ Resume Timeline
         margin-bottom: 15px;
         min-height: 100px;
     }
+    .timeline:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        margin-left: -1.5px;
+        background-color: #e1e1e1;
+    }
+    .resume:before {
+        /* content: "url(../../assets/images/ico/laptop_32px.png)" center no-repeat;*/
+        content: url(../../assets/images/ico/laptop.png);
+         position: absolute;
+         top: -34px;
+         width: 10px;
+         height: 10px;
+         left: 50%;
+         margin: 0  0 10px -22px;
+         /*-webkit-transform: rotate(45deg);
+         -moz-transform: rotate(45deg);
+         -ms-transform: rotate(45deg);
+         -o-transform: rotate(45deg);
+         transform: rotate(45deg);*/
+     }
+     .resumeedu:before {
+        /* content: "url(../../assets/images/ico/laptop_32px.png)" center no-repeat;*/
+        content: url(../../assets/images/ico/book-open_32px.png);
+         position: absolute;
+         top: 45px;
+         width: 10px;
+         height: 10px;
+         left: 50%;
+         margin: 0  0 10px -22px;
+         /*-webkit-transform: rotate(45deg);
+         -moz-transform: rotate(45deg);
+         -ms-transform: rotate(45deg);
+         -o-transform: rotate(45deg);
+         transform: rotate(45deg);*/
+     }
+
     .timeline>li .posted-date {
         position: absolute;
         text-align: center;
@@ -904,7 +902,7 @@ Resume Timeline
     }
     .timeline>li .timeline-panel {
         float: left;
-        width: 43%;
+        width: 45%;
         text-align: right;
         border: 2px solid #e1e1e1;
         background-color: #e1e1e1;
@@ -930,7 +928,7 @@ Resume Timeline
         z-index: -1;
     }
     .timeline>li .timeline-content:hover {
-        background: #000;
+        background: #0e0e0e;
         color: #fff;
     }
     .timeline>li .timeline-panel::before,
@@ -998,8 +996,8 @@ Resume Timeline
         border-left: 0;
     }
     .timeline>li .posted-date {
-        left: 50%;
-        width: 120px;
+        left: 51.5%;
+        width: 90px;
         margin-left: -60px;
         margin-top: 28px;
     }
@@ -1014,6 +1012,8 @@ Resume Timeline
 .skills-section {
     background-color: #1a1e23;
     color: #fff;
+    -webkit-clip-path: polygon(0 0, 100% 15%, 100% 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
 }
 
 .skills-section .section-title {
@@ -1151,7 +1151,9 @@ Resume Timeline
 
 .works-section {
     background-color: #1a1e23;
-    color: #fff;;
+    color: #fff;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
 }
 
 .portfolio-item {
@@ -1802,7 +1804,7 @@ h2.altsectitle{
     text-align: center;
     /*border-bottom: 1px solid #fff;
     line-height: 0.1em;*/
-    margin: 10px 0 20px;
+    margin: 15px 0 15px;
     color: #e7bd12;
 }
 
