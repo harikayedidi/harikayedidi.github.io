@@ -1,8 +1,8 @@
-# robots.txt for http://www.harikayedidi.com/
+# robots.txt for https://harikayedidi.github.io/
 
 user-agent: AhrefsBot
 disallow: / 
 
 User-Agent: Googlebot
-Allow: .js
-Allow: .css
+Allow: /.js
+Allow: /.css
