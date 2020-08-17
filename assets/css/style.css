@@ -1012,8 +1012,8 @@ Resume Timeline
 .skills-section {
     background-color: #1a1e23;
     color: #fff;
-    -webkit-clip-path: polygon(0 0, 100% 15%, 100% 100%, 0 100%);
-    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    -webkit-clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 100%);
 }
 
 .skills-section .section-title {
