@@ -198,6 +198,7 @@ h6 {
 
 .btn-primary {
     background-color: #e7bd12;
+    color: #333333;
     border-color: rgba(51, 51, 51, 0.15);
 }
 
@@ -216,6 +217,7 @@ h6 {
 
 .btn-info {
     background-color: #e7bd12;
+    color: #2c3e50;
     border-color: rgba(51, 51, 51, 0.15);
 }
 
@@ -631,7 +633,7 @@ SOCIAL ICON
 
 .download-button a {
     margin-right: 20px;
-    color: #fff;
+    color: #333333;
 }
 
 .download-button a i {

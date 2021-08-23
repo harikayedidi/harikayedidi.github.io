@@ -125,7 +125,8 @@
                     </div>
                     <div class="download-button">
                         <a class="btn btn-info btn-lg" href="#contact"><i class="fa fa-paper-plane"></i>Hire me</a>
-                        <a class="btn btn-primary btn-lg" href="assets/Resume_HarikaYedidi.pdf" target="_blank"><i
+                        <a class="
+                         btn-primary btn-lg" href="assets/Resume_HarikaYedidi.pdf" target="_blank"><i
                                 class="fa fa-download"></i>Download Resume</a>
                     </div>
                 </div>
@@ -694,7 +695,7 @@
         </div>
         <!-- Scroll-up -->
         <div class="scroll-up">
-            <a class="btn-large" href="#home"><i class="fa fa-angle-up"></i></a>
+            <a aria-label="Go to top of the screen" class="btn-large" href="#home"><i class="fa fa-angle-up"></i></a>
         </div>
     </section>
     <!-- Footer Section -->
@@ -702,10 +703,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="copyright text-center">
-                        <p>&copy; <script type="text/javascript">
-                                document.write(new Date().getFullYear());
-                            </script> Harika Yedidi </p>
+                    <div id="copyright" class="copyright text-center">
                     </div>
                 </div>
             </div>
@@ -737,6 +735,8 @@
         $(document).ready(function () {
             var timer = setInterval(changeTitle, 5000);
             $('.floatlabel').floatlabel();
+            var dated = new Date().getFullYear();
+            $('#copyright').html('<p>Copyright &copy; 2018 - ' + dated + ', Harika Yedidi.</p>');
             $('#contactForm').bootstrapValidator({
                     // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
                     fields: {
