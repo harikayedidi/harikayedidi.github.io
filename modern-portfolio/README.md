@@ -1,16 +1,55 @@
-# React + Vite
+# Modern Portfolio (React + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the active portfolio application for Harika Yedidi.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Explorer View and Resume Mode toggle
+- Interactive career roadmap with animated lane and car navigation
+- Expandable experience cards and detailed role highlights
+- Responsive layout for desktop and mobile
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- Vite
+- Motion / Framer Motion
+- CSS
 
-## Expanding the ESLint configuration
+## Development
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm install
+npm run dev
+```
+
+Dev server runs at `http://localhost:5173`.
+
+## Build
+
+```bash
+npm run build
+```
+
+## Preview Production Build
+
+```bash
+npm run preview
+```
+
+## Notes
+
+- This app is the default website served at `https://harikayedidi.github.io/`.
+- Build artifacts are published from `dist/` to repository root (`../index.html` and `../assets/`).
+- The legacy static website is available at `../old-website.html` and stored in `../legacy-site/`.
+
+## Publish To Root (GitHub Pages)
+
+After building, copy the generated files to the repo root:
+
+```bash
+npm run build
+cp dist/index.html ../index.html
+rm -rf ../assets
+cp -R dist/assets ../assets
+```

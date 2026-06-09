@@ -1,28 +1,23 @@
-# Harika Yedidi Portfolio
+# Harika Yedidi Portfolio Repository
 
-This repository contains two portfolio experiences:
+This repository now serves the modern React portfolio directly from the root URL.
 
-1. `index.html` based handcrafted site (legacy/static)
-2. `modern-portfolio/` React + Vite app (interactive modern experience)
+## What Changed
 
-## Project Layout
+- The modern app source remains in `modern-portfolio/`.
+- The old handcrafted static site was moved into `legacy-site/`.
+- Root `index.html` is now the built output of the modern app.
+- Legacy site is exposed at `old-website.html`.
 
-- `index.html`: Legacy portfolio homepage
-- `assets/`: Legacy CSS, JS, fonts, and images
-- `modern-portfolio/`: Modern React app source
+## Repository Structure
 
-## Modern Portfolio Features
+- `index.html`: Built modern portfolio entry (default site)
+- `assets/`: Built modern portfolio static assets
+- `modern-portfolio/`: Active React + Vite portfolio app
+- `legacy-site/`: Archived legacy static website (`index.html`, `assets/`, `robots.txt`)
+- `old-website.html`: Root entry point for the legacy website
 
-- Dual mode UI:
-	- Explorer View
-	- Resume Mode
-- Interactive "Career Roadmap" section with clickable mile markers
-- Animated lane and car movement across experience milestones
-- Responsive layout for desktop and mobile
-
-## Run the Modern App
-
-From the repository root:
+## Run The Modern Portfolio
 
 ```bash
 cd modern-portfolio
@@ -30,16 +25,16 @@ npm install
 npm run dev
 ```
 
-Default local URL:
+Open `http://localhost:5173`.
 
-- `http://localhost:5173`
-
-## Build
+## Build The Modern Portfolio
 
 ```bash
 cd modern-portfolio
 npm run build
 ```
+
+To publish the modern build at root, copy output from `modern-portfolio/dist/` to repository root (`index.html` and `assets/`).
 
 ## Preview Production Build
 
@@ -48,14 +43,6 @@ cd modern-portfolio
 npm run preview
 ```
 
-## Deploy Notes
+## Legacy Website
 
-- The legacy static site can be served directly from repository root.
-- The modern app outputs production files to `modern-portfolio/dist/`.
-
-## Tech Stack (Modern App)
-
-- React
-- Vite
-- Motion / Framer Motion
-- CSS
+The previous website is available at `/old-website.html` and sources are under `legacy-site/`.
