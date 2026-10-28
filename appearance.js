@@ -1,0 +1,29 @@
+(() => {
+  'use strict';
+  const config = {"palettes":{"dusk":{"bg":"#141b24","panel":"#1b2430","surface-raised":"#202b31","surface-soft":"#1d2730","hover":"#26352e","selected":"#2b3c35","paper":"#f3eee0","muted":"#bec7c3","line":"#53635a","control-border":"#829287","mint":"#a9d7b8","coral":"#edb29d","gold":"#e4ce9a","lilac":"#c8bce5","on-accent":"#141b24","backdrop":"#080e16e8","map-water":"#152c29","map-land":"#315846","map-coast":"#b8c8b1","map-grid":"#b8c8b1","map-label":"#e2e9d9","map-route":"#e4ce9a","map-marker":"#edb29d","art-system":"#2e423e","art-motion":"#453832","art-agent":"#333341","art-window":"#e1e2cc","art-ink":"#435f50","art-soft":"#b9c4a5","demo-paper":"#f1efe3","demo-ink":"#293b37","demo-muted":"#4a6056","demo-surface":"#dfe3d4","demo-button-ink":"#152329","demo-focus":"#193c32","lab-mint":"#a9d7b8","lab-apricot":"#edb29d","lab-lilac":"#c8bce5"},"daylight":{"bg":"#f7f4ed","panel":"#fffdf8","surface-raised":"#eee8dc","surface-soft":"#e9e4d8","hover":"#e4e9df","selected":"#e0e9e0","paper":"#182923","muted":"#40554a","line":"#9ba89a","control-border":"#637465","mint":"#225c40","coral":"#873e2d","gold":"#70421e","lilac":"#614381","on-accent":"#fffdf8","backdrop":"#17251eaf","map-water":"#e4ece7","map-land":"#b5cebf","map-coast":"#4b6f59","map-grid":"#4b6f59","map-label":"#263f36","map-route":"#70421e","map-marker":"#873e2d","art-system":"#d9e6d7","art-motion":"#f0dfd0","art-agent":"#e4ddeb","art-window":"#fffdf8","art-ink":"#284535","art-soft":"#b0c6af","demo-paper":"#fffdf8","demo-ink":"#182923","demo-muted":"#40554a","demo-surface":"#e1e8dd","demo-button-ink":"#182923","demo-focus":"#225c40","lab-mint":"#b5dcc1","lab-apricot":"#efbeaa","lab-lilac":"#d7c6f0"},"lavender":{"bg":"#211d2c","panel":"#2b2637","surface-raised":"#352d42","surface-soft":"#302b3d","hover":"#382f46","selected":"#3d324e","paper":"#f5edf8","muted":"#d1c5db","line":"#776382","control-border":"#b29bbb","mint":"#b9dbc6","coral":"#dcc0f3","gold":"#f0d8a4","lilac":"#d3bbea","on-accent":"#211d2c","backdrop":"#100d1ae8","map-water":"#252333","map-land":"#51445f","map-coast":"#cfbadb","map-grid":"#cfbadb","map-label":"#ede3f2","map-route":"#f0d8a4","map-marker":"#dcc0f3","art-system":"#3d354b","art-motion":"#463544","art-agent":"#373449","art-window":"#ece1f1","art-ink":"#493253","art-soft":"#c7b5d4","demo-paper":"#f3eaf8","demo-ink":"#30233e","demo-muted":"#594665","demo-surface":"#e3d6ec","demo-button-ink":"#30233e","demo-focus":"#614381","lab-mint":"#b9dbc6","lab-apricot":"#efc7dc","lab-lilac":"#d3bbea"}},"contrast":{"dark":{"bg":"#000000","panel":"#000000","surface-raised":"#000000","surface-soft":"#000000","hover":"#101010","selected":"#181818","paper":"#ffffff","muted":"#ffffff","line":"#ffffff","control-border":"#ffffff","mint":"#ffffff","coral":"#ffea00","gold":"#ffea00","lilac":"#ffffff","on-accent":"#000000","backdrop":"#000000ed","map-water":"#000000","map-land":"#111111","map-coast":"#ffffff","map-grid":"#ffffff","map-label":"#ffffff","map-route":"#ffea00","map-marker":"#ffea00","art-system":"#000000","art-motion":"#000000","art-agent":"#000000","art-window":"#ffffff","art-ink":"#000000","art-soft":"#cccccc","demo-paper":"#000000","demo-ink":"#ffffff","demo-muted":"#ffffff","demo-surface":"#181818","demo-button-ink":"#000000","demo-focus":"#ffea00","lab-mint":"#ffea00","lab-apricot":"#ffea00","lab-lilac":"#ffea00"},"light":{"bg":"#ffffff","panel":"#ffffff","surface-raised":"#ffffff","surface-soft":"#ffffff","hover":"#f5f5f5","selected":"#ededed","paper":"#000000","muted":"#000000","line":"#000000","control-border":"#000000","mint":"#003cac","coral":"#003cac","gold":"#003cac","lilac":"#003cac","on-accent":"#ffffff","backdrop":"#000000b8","map-water":"#ffffff","map-land":"#f0f0f0","map-coast":"#000000","map-grid":"#000000","map-label":"#000000","map-route":"#003cac","map-marker":"#003cac","art-system":"#ffffff","art-motion":"#ffffff","art-agent":"#ffffff","art-window":"#ffffff","art-ink":"#000000","art-soft":"#dddddd","demo-paper":"#ffffff","demo-ink":"#000000","demo-muted":"#000000","demo-surface":"#ededed","demo-button-ink":"#ffffff","demo-focus":"#003cac","lab-mint":"#003cac","lab-apricot":"#003cac","lab-lilac":"#003cac"}}};
+  const storageKey = 'harika-atlas-appearance';
+  let saved = null;
+  try { saved = JSON.parse(localStorage.getItem(storageKey)); } catch (_) { /* Storage can be blocked. */ }
+  const prefersContrast = window.matchMedia('(prefers-contrast: more)');
+  let theme = saved && Object.hasOwn(config.palettes, saved.theme) ? saved.theme : 'dusk';
+  let highContrast = saved && typeof saved.highContrast === 'boolean' ? saved.highContrast : prefersContrast.matches;
+  let explicit = Boolean(saved && typeof saved.highContrast === 'boolean');
+  function palette() { return highContrast ? config.contrast[theme === 'daylight' ? 'light' : 'dark'] : config.palettes[theme]; }
+  function apply() {
+    document.documentElement.setAttribute('data-theme', theme);
+    document.documentElement.setAttribute('data-high-contrast', String(highContrast));
+    for (const [key, value] of Object.entries(palette())) document.documentElement.style.setProperty('--'+key, value);
+    document.documentElement.style.colorScheme = theme === 'daylight' ? 'light' : 'dark';
+  }
+  function set(nextTheme, nextContrast, persist = true) {
+    if (Object.hasOwn(config.palettes, nextTheme)) theme = nextTheme;
+    highContrast = Boolean(nextContrast);
+    if (persist) {
+      explicit = true;
+      try { localStorage.setItem(storageKey, JSON.stringify({theme, highContrast})); } catch (_) { /* Changes still work in memory. */ }
+    }
+    apply();
+  }
+  apply();
+  window.AtlasAppearance = { palette, set, state: () => ({theme, highContrast}), config, prefersContrast, hasExplicitPreference: () => explicit };
+})();
