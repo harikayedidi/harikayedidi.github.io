@@ -1,0 +1,168 @@
+/* Interface Atlas / private future-terminal exploration. Theme colors remain semantic. */
+.future-atlas{background:var(--bg);isolation:isolate;overflow-x:clip}
+.future-atlas::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:radial-gradient(circle at 13% 15%,color-mix(in srgb,var(--lilac) 12%,transparent),transparent 32%),radial-gradient(circle at 95% 42%,color-mix(in srgb,var(--mint) 9%,transparent),transparent 37%);}
+.site-header{border-bottom-color:var(--line)}
+.hero{position:relative;padding-top:85px;padding-bottom:85px}
+.hero::before{content:"ATLAS / 02";position:absolute;top:22px;left:5%;font:10px var(--mono);letter-spacing:.3em;color:var(--muted)}
+.hero h1{font-size:clamp(76px,8.7vw,144px);line-height:.95;letter-spacing:-.065em}
+.hero h1 em{display:inline-block;text-shadow:4px 5px 0 color-mix(in srgb,var(--coral) 16%,transparent)}
+.hero .eyebrow{letter-spacing:.2em;margin-bottom:28px}
+.hero-intro{max-width:500px}.hero-footnote{border-top:1px solid var(--line)}
+.geographic-atlas{border-radius:22px;box-shadow:12px 18px 0 color-mix(in srgb,var(--line) 20%,transparent),0 30px 70px color-mix(in srgb,var(--bg) 70%,transparent);transform:perspective(1400px) rotateY(-5deg) rotateX(2deg);transition:transform 600ms ease}
+.atlas-top{background:var(--surface-raised)}.atlas-bottom{border-top:1px solid var(--line)}
+.capability-strip{border-block:1px solid var(--line);background:var(--panel)}
+.section-heading h2,.journey-intro h2{font-size:clamp(38px,4.6vw,65px)}
+.work-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;perspective:1600px;align-items:stretch}
+.work-card{display:flex;flex-direction:column;position:relative;min-width:0;overflow:visible;border-radius:22px;background:var(--panel);box-shadow:0 10px 0 color-mix(in srgb,var(--line) 17%,transparent),0 18px 35px color-mix(in srgb,var(--bg) 65%,transparent);transform:perspective(1000px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg)) translateY(var(--lift,0px));transition:transform 230ms ease,box-shadow 230ms ease;transform-style:preserve-3d}
+.work-card::after{content:"";position:absolute;inset:0;border:1px solid var(--line);border-radius:inherit;pointer-events:none;background:radial-gradient(circle at var(--shine-x,30%) var(--shine-y,10%),color-mix(in srgb,var(--paper) 8%,transparent),transparent 48%)}
+.work-card:focus-within{--lift:-6px;outline:2px solid var(--gold);outline-offset:5px}
+.work-card .card-art{height:230px;min-height:0;border:0;border-bottom:1px solid var(--line);border-radius:22px 22px 0 0;overflow:hidden;flex-shrink:0;position:relative}
+.work-card .work-card-body{padding:27px;display:flex;flex-direction:column;flex:1;transform:translateZ(12px)}
+.work-card h3{font-size:30px;margin-top:22px}.work-card-body>p{font-size:14px;line-height:1.8;margin-top:16px}.work-card .tags{margin-bottom:24px}.work-card .text-button{margin-top:auto;align-self:start;min-height:44px}
+.card-meta{gap:8px;flex-wrap:wrap}.draft-tag{border-radius:20px;padding:4px 8px}.art-caption{font-size:8px}
+.component-window{width:270px;max-width:85%;transform:translateY(-8px) rotate(-9deg);box-shadow:14px 20px 0 color-mix(in srgb,var(--mint) 14%,transparent)}
+.agent-terminal{max-width:90%;width:290px;transform:rotate(5deg);box-shadow:-12px 17px 0 color-mix(in srgb,var(--lilac) 13%,transparent)}
+.motion-ball{box-shadow:0 0 55px color-mix(in srgb,var(--coral) 35%,transparent)}
+.profile-section{gap:60px}.profile-focus{border-radius:20px;box-shadow:8px 8px 0 color-mix(in srgb,var(--line) 20%,transparent)}
+.lab-shell{border-radius:20px;box-shadow:10px 12px 0 color-mix(in srgb,var(--line) 16%,transparent);overflow:hidden}
+.journey-section{display:block;border-top:1px solid var(--line);position:relative}
+.journey-intro{max-width:800px}.journey-intro>p:not(.eyebrow){max-width:650px;font-size:15px}
+.passport-console{margin-top:38px;border:1px solid var(--line);border-radius:20px 20px 0 0;background:var(--panel);padding:24px 28px 14px}
+.passport-toolbar{display:flex;gap:18px;justify-content:space-between;align-items:center;margin-bottom:25px}
+.passport-caption{font:10px var(--mono);letter-spacing:.1em;color:var(--muted)}
+.passport-modes{display:flex;gap:4px;border:1px solid var(--line);padding:4px;border-radius:30px}
+.passport-modes button{min-height:44px;padding:9px 18px;background:transparent;color:var(--muted);border-radius:24px;font-size:12px}
+.passport-modes button[aria-pressed=true]{background:var(--paper);color:var(--bg)}
+.passport-route{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.passport-route button{position:relative;display:grid;gap:6px;text-align:left;padding:17px 14px;border:1px solid var(--line);border-radius:12px;min-width:0;color:var(--muted);background:var(--bg);transition:transform 250ms ease,background-color 250ms ease;min-height:118px}
+.passport-route strong{font-size:19px;font-weight:500;letter-spacing:-.03em;color:var(--paper)}
+.passport-route button>span:last-child{font-size:11px}.route-index{font:9px var(--mono)}
+.passport-route button[aria-pressed=true]{background:var(--selected);border-color:var(--mint);box-shadow:inset 0 -3px 0 var(--mint)}
+.passport-route button:active{transform:scale(.96)}
+.passport-position{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:16px;color:var(--muted);font:11px var(--mono)}
+.passport-position>div{display:flex;gap:6px}.passport-position button{width:44px;height:44px;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--paper);font-size:20px}.passport-position button:disabled{opacity:.4}
+.passport-ready .timeline{margin:0;padding:0;border:1px solid var(--line);border-top:0;border-radius:0 0 20px 20px;background:var(--surface-soft);overflow:hidden}
+.passport-ready .timeline article{position:relative;padding:36px 42px 38px 36px;margin:0;border:0;min-height:350px;border-radius:0;animation:passport-arrive 450ms cubic-bezier(.2,.8,.2,1)}
+.passport-ready .timeline article::after{content:"";position:absolute;right:24px;top:30px;width:68px;height:68px;border:1px solid var(--line);border-radius:50%;background:repeating-radial-gradient(circle,transparent 0 5px,var(--line) 6px 7px);opacity:.22;pointer-events:none}
+.passport-ready .timeline-dot{display:none}.passport-ready .timeline h3{font-size:clamp(29px,3.5vw,44px);margin-bottom:12px;max-width:85%}.passport-ready .timeline-date{color:var(--mint);font:11px var(--mono);letter-spacing:.08em;margin-bottom:22px}.passport-ready .timeline-role{font-size:15px;color:var(--paper);margin-bottom:20px}.passport-ready .timeline article>p:not([class]){font-size:15px;max-width:800px}
+.passport-ready .experience-detail{max-width:900px;margin-top:25px}.passport-ready .experience-detail summary{font-size:14px;min-height:48px}.passport-ready .experience-detail-body{font-size:15px;line-height:1.85}
+.passport-all .timeline article+article{border-top:1px dashed var(--line)}
+.passport-ready .timeline article:target{outline:2px solid var(--gold);outline-offset:-4px}
+@keyframes passport-arrive{from{opacity:.25;transform:translateX(18px)}to{opacity:1;transform:none}}
+.kinetic-lab{border-top:1px solid var(--line);padding-top:8px;display:grid;gap:12px;margin-top:20px}.kinetic-lab>label{font-weight:600}.kinetic-lab input[type=range]{width:100%;min-height:44px;accent-color:var(--mint)}.kinetic-lab output{float:right;font-family:var(--mono);font-size:13px}.kinetic-stage{padding:20px 12px 28px;perspective:900px;display:grid;place-items:center}
+.kinetic-card{--press-scale:.96;--release-ease:cubic-bezier(.2,1.7,.4,1);width:100%;max-width:360px;min-height:340px;border:1px solid var(--mint);background:var(--panel);color:var(--paper);border-radius:22px;padding:0;text-align:left;overflow:hidden;touch-action:manipulation;box-shadow:0 12px 0 color-mix(in srgb,var(--mint) 18%,var(--bg));transform:scale(1) rotateX(0);transition:transform 500ms var(--release-ease),box-shadow 500ms var(--release-ease);cursor:pointer}
+.kinetic-card:active,.kinetic-card.preview-pressed{transform:scale(var(--press-scale)) rotateX(4deg);box-shadow:0 2px 0 var(--line);transition-duration:100ms;transition-timing-function:ease-out}
+.kinetic-card[aria-pressed=true]{border-color:var(--gold)}
+.kinetic-landscape{height:170px;display:block;position:relative;background:var(--bg);overflow:hidden;border-bottom:1px solid var(--line)}
+.kinetic-planet{position:absolute;width:100px;height:100px;border-radius:50%;background:var(--coral);right:38px;top:25px;box-shadow:0 0 0 14px color-mix(in srgb,var(--coral) 12%,transparent)}
+.kinetic-ridge{position:absolute;width:90%;height:140px;border:1px solid var(--mint);background:var(--selected);transform:rotate(-25deg);left:-35%;bottom:-95px;z-index:2}.kinetic-ridge.ridge-back{left:auto;right:-20%;transform:rotate(25deg);background:var(--surface-raised);z-index:1;bottom:-75px}
+.kinetic-coordinates{position:absolute;left:18px;top:16px;font:9px var(--mono);color:var(--muted)}
+.kinetic-card-copy{display:grid;gap:12px;padding:22px}.kinetic-card-copy strong{font:30px var(--serif);letter-spacing:-.03em}.kinetic-card-copy>span:not(.eyebrow){font-size:13px;color:var(--muted)}.kinetic-card-copy .kinetic-save{border-top:1px solid var(--line);padding-top:14px;color:var(--mint)!important;font-weight:600}
+.demo-reduced .kinetic-card,.demo-reduced .interaction-target{transition:none!important;transform:none!important}
+#kinetic-feedback{font-size:14px!important;margin-top:8px!important}.kinetic-lab .trace-caption{font-size:12px!important}
+.archive-section{border-radius:20px}.closing{position:relative}.closing h2{font-size:clamp(42px,6vw,80px)}
+@media(hover:hover) and (pointer:fine){.work-card:hover{--lift:-8px;box-shadow:0 16px 0 color-mix(in srgb,var(--line) 22%,transparent),0 28px 50px color-mix(in srgb,var(--bg) 65%,transparent)}.passport-route button:hover{transform:translateY(-4px)}.kinetic-card:hover:not(:active):not(.preview-pressed){transform:translateY(-5px) rotateX(2deg)}}
+@media(max-width:1000px){.work-grid{grid-template-columns:1fr}.work-card{display:grid;grid-template-columns:42% 1fr}.work-card .card-art{height:100%;min-height:270px;border-bottom:0;border-right:1px solid var(--line);border-radius:22px 0 0 22px}.work-card h3{margin-top:15px}.work-card-body>p{margin-bottom:18px}.hero h1{font-size:clamp(72px,10vw,110px)}.passport-route strong{font-size:16px}.passport-route button{padding:14px 10px}.route-index{font-size:8px}}
+@media(max-width:680px){.hero{padding-top:65px;padding-bottom:55px}.hero h1{font-size:clamp(68px,16vw,100px)}.geographic-atlas{transform:none;box-shadow:5px 8px 0 color-mix(in srgb,var(--line) 20%,transparent)}.work-card{display:flex}.work-card .card-art{height:210px;min-height:0;border-right:0;border-bottom:1px solid var(--line);border-radius:22px 22px 0 0}.work-card .work-card-body{padding:25px}.work-grid{gap:30px}.passport-console{padding:20px 15px 12px}.passport-toolbar{align-items:flex-start;flex-direction:column}.passport-caption{font-size:9px}.passport-modes{width:100%}.passport-modes button{flex:1;padding:9px 10px}.passport-route{grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}.passport-route button{grid-column:span 2;min-height:105px;padding:13px 9px}.passport-route button:nth-last-child(-n+2){grid-column:span 3}.passport-route strong{font-size:16px}.passport-route button>span:last-child{font-size:10px}.passport-position{font-size:10px}.passport-ready .timeline article{padding:28px 22px;min-height:0}.passport-ready .timeline-date{font-size:9px;max-width:82%;line-height:1.8}.passport-ready .timeline-role{font-size:13px}.passport-ready .timeline article>p:not([class]){font-size:14px}.passport-ready .timeline article::after{width:45px;height:45px;right:15px}.passport-ready .experience-detail summary{font-size:13px}.passport-ready .experience-detail-body{font-size:14px}.profile-section{gap:30px}.section-heading h2,.journey-intro h2{font-size:36px}.kinetic-stage{padding:12px 0 25px}.kinetic-card-copy{padding:18px}.kinetic-card-copy strong{font-size:27px}}
+@media(prefers-reduced-motion:reduce){.work-card,.geographic-atlas,.kinetic-card,.passport-route button{transform:none!important;transition:none!important}.passport-ready .timeline article{animation:none!important}}
+.reduce-motion .work-card,.reduce-motion .geographic-atlas,.reduce-motion .kinetic-card,.reduce-motion .passport-route button{transform:none!important}
+[data-high-contrast=true] .work-card::after,[data-high-contrast=true] .future-atlas::before{display:none}
+[data-high-contrast=true] .work-card,[data-high-contrast=true] .geographic-atlas,[data-high-contrast=true] .kinetic-card{box-shadow:none;border:2px solid var(--paper)}
+@media(forced-colors:active){.future-atlas::before,.work-card::after,.timeline article::after{display:none}.work-card,.passport-route button,.kinetic-card{border:2px solid CanvasText;box-shadow:none}.passport-route button[aria-pressed=true],.passport-modes button[aria-pressed=true]{outline:3px solid Highlight}.kinetic-planet{background:Highlight}.kinetic-save{color:ButtonText!important}}
+@media print{.future-atlas::before,.passport-console{display:none!important}.passport-ready .timeline article[hidden]{display:block!important}.work-card,.geographic-atlas{transform:none!important;box-shadow:none}.passport-ready .timeline article{color:#172327;background:white;animation:none}.passport-ready .timeline{border:0}.experience-detail-body{display:block!important}.passport-ready .timeline article::after{display:none}}
+
+@media(max-width:560px){.site-header{flex-wrap:wrap;gap:12px}.site-header nav{order:3;width:100%;justify-content:space-between;gap:10px}.site-header nav a:nth-child(3){display:block}.site-header nav a{min-height:36px;display:flex;align-items:center;font-size:11px}.hero::before{font-size:9px}}
+/* The passport is now an open book, with a bound identity page and turning leaves. */
+.passport-book{position:relative;display:grid;grid-template-columns:minmax(220px,.65fr) minmax(0,1.35fr);border:1px solid var(--line);border-top:0;border-radius:0 0 20px 20px;box-shadow:0 6px 0 var(--bg),0 8px 0 var(--line),0 12px 0 var(--bg),0 14px 0 var(--line);background:var(--surface-soft)}
+.passport-endpaper{position:relative;padding:38px 32px;background:var(--panel);border-radius:0 0 0 20px;border-right:1px solid var(--line);text-align:center;display:flex;flex-direction:column;align-items:center;gap:18px}
+.passport-endpaper::after{content:"";position:absolute;top:0;bottom:0;right:0;width:20px;background:linear-gradient(to left,color-mix(in srgb,var(--bg) 50%,transparent),transparent);pointer-events:none}
+.passport-monogram{font:italic 56px var(--serif);color:var(--coral);line-height:1}.passport-endpaper .eyebrow{font-size:9px;letter-spacing:.18em}.passport-endpaper h3{font:40px/1.1 var(--serif);letter-spacing:-.04em}.passport-owner{font-size:15px;color:var(--paper)}.passport-book-caption{font-size:12px;line-height:1.8;color:var(--muted)}
+.passport-stamp{display:grid;gap:3px;place-content:center;min-width:135px;min-height:90px;border:2px solid var(--mint);outline:1px solid var(--mint);outline-offset:4px;transform:rotate(-9deg);border-radius:45%;color:var(--mint);margin:16px 0}.passport-stamp span{font:21px var(--serif)}.passport-stamp small{font:10px var(--mono)}.passport-folio{font:11px var(--mono);color:var(--muted);margin-top:auto}
+.passport-ready .passport-book .timeline{position:relative;border:0;border-radius:0 0 20px 0;overflow:visible;perspective:1600px;min-width:0}
+.passport-ready .passport-book .timeline article{animation:none!important;min-height:530px;padding:38px 32px}.passport-ready .passport-book .timeline article::after{display:none}.passport-ready .passport-book .timeline h3{max-width:100%;font-size:36px}
+.book-turn-sheet{position:absolute;inset:0;z-index:5;transform-origin:left center;transform-style:preserve-3d;pointer-events:none;border-radius:0 0 20px 0}
+.book-turn-front,.book-turn-back{position:absolute;inset:0;padding:38px 32px;background:var(--surface-soft);color:var(--paper);backface-visibility:hidden;border:1px solid var(--line);border-radius:0 0 20px 0;overflow:hidden;box-shadow:6px 0 20px color-mix(in srgb,var(--bg) 45%,transparent)}
+.book-turn-front>p{font-size:15px;color:var(--muted);margin-bottom:20px}.book-turn-front h3{margin:0 0 20px}.book-turn-back{transform:rotateY(180deg);display:grid;place-content:center;text-align:center;font:11px var(--mono);letter-spacing:.18em;background:repeating-linear-gradient(45deg,transparent,transparent 20px,color-mix(in srgb,var(--line) 10%,transparent) 20px,color-mix(in srgb,var(--line) 10%,transparent) 21px),var(--panel)}
+.passport-all .passport-book{display:block}.passport-all.passport-ready .passport-book .timeline article{min-height:0}
+/* Keep text and surface paired in every motion-example state. */
+.atlas-demo .interaction-target[data-state=hover],.atlas-demo .interaction-target[data-state=press],.atlas-demo .interaction-target:active{background:var(--paper);color:var(--bg);border-color:var(--paper)}
+@media(hover:hover){.atlas-demo .interaction-target:not(:disabled):hover{background:var(--paper);color:var(--bg);border-color:var(--paper)}}
+.atlas-demo .interaction-target{transition-property:transform,box-shadow}
+.lab-width-control{display:grid!important;gap:8px;font-size:11px;color:var(--muted);margin:22px 0 0}
+.lab-width-control select{width:100%;min-height:44px;background:var(--bg);color:var(--paper);border:1px solid var(--control-border);border-radius:7px;font:12px var(--sans);padding:8px}
+.sample-interface{container-type:inline-size;transition:max-width 350ms ease;width:100%;max-width:100%;margin-inline:auto}
+.lab-mobile .sample-interface{max-width:320px;box-shadow:0 0 0 5px var(--bg),0 0 0 6px var(--line);border-radius:20px!important}
+@container(max-width:340px){.sample-profile{gap:10px}.sample-profile h3{font-size:20px;line-height:1.25}.sample-avatar{width:36px;height:36px;flex-shrink:0}.sample-task{flex-wrap:wrap;gap:10px}.sample-task>div{min-width:0;flex:1}.sample-task small{line-height:1.6}.sample-badge{margin-left:0}.sample-cta{width:100%;font-size:12px}.sample-feedback{font-size:11px;line-height:1.7}.sample-tabs{gap:15px}}
+@media(max-width:800px){.passport-book{grid-template-columns:minmax(180px,.55fr) minmax(0,1fr)}.passport-endpaper{padding:32px 20px}.passport-endpaper h3{font-size:33px}.passport-ready .passport-book .timeline article{padding:32px 25px}}
+@media(max-width:600px){.passport-book{display:block}.passport-endpaper{display:grid;grid-template-columns:1fr auto;gap:10px 15px;text-align:left;padding:22px;border-right:0;border-bottom:1px solid var(--line);border-radius:0}.passport-monogram,.passport-endpaper .eyebrow,.passport-book-caption{display:none}.passport-endpaper h3{font-size:28px;grid-column:1}.passport-endpaper h3 br{display:none}.passport-owner{font-size:12px;grid-column:1}.passport-stamp{grid-column:2;grid-row:1/4;min-width:90px;min-height:65px;margin:0 5px 0 0}.passport-stamp span{font-size:18px}.passport-stamp small{font-size:8px}.passport-folio{grid-column:1;font-size:9px}.passport-ready .passport-book .timeline article{padding:28px 22px;min-height:0}.passport-ready .passport-book .timeline h3{font-size:30px}.book-turn-front,.book-turn-back{padding:28px 22px}.passport-ready .passport-book .timeline{border-radius:0 0 20px 20px}.lab-width-control{grid-column:1/-1;grid-row:4;margin:0}.lab-controls .switch-label{grid-row:5}.lab-controls .reset-button{grid-row:5}.lab-controls .lab-disclaimer{grid-row:6}}
+@media(prefers-reduced-motion:reduce){.book-turn-sheet{display:none}.sample-interface{transition:none}}
+.reduce-motion .book-turn-sheet{display:none}.reduce-motion .sample-interface{transition:none}
+[data-high-contrast=true] .passport-endpaper::after{display:none}
+@media(forced-colors:active){.passport-book,.passport-endpaper,.passport-stamp{border-color:CanvasText;box-shadow:none}.book-turn-sheet,.passport-endpaper::after{display:none}.atlas-demo .interaction-target{background:ButtonFace!important;color:ButtonText!important;border-color:ButtonText!important}}
+@media print{.passport-book{display:block;border:0;box-shadow:none}.passport-endpaper,.book-turn-sheet{display:none!important}.passport-ready .passport-book .timeline article{min-height:0}}
+
+.journey-section:not(.passport-ready) .passport-book{display:block}
+/* The whole case-study card is one native, keyboard-accessible button target. */
+.work-card .work-card-body{transform:none;position:static}
+.work-card .text-button::after{content:"";position:absolute;inset:0;z-index:3;border-radius:22px;cursor:pointer}
+.work-card .text-button:focus-visible{outline:none}.work-card:has(.text-button:focus-visible){outline:3px solid var(--gold);outline-offset:5px}
+/* Comfortable reading sizes throughout the case-study dialog. */
+.study-tabs{gap:26px}.study-tabs button{font-size:16px;font-weight:500;min-height:60px;line-height:1.4;white-space:normal}
+#study-panel{font-size:16px;line-height:1.8}#study-panel p,#study-panel li{font-size:16px;line-height:1.8}
+#study-panel h3{font-size:26px}#study-panel h4{font-size:21px}
+#study-panel .decision-list h3{font-size:21px!important;line-height:1.4}
+#study-panel .decision-list p:last-child{font-size:16px!important;line-height:1.8}
+.dialog-header>p{font-size:16px}.dialog-header .draft-tag{font-size:14px}.dialog-header .tags span{font-size:13px}
+.dialog-top .eyebrow{font-size:12px}.dialog-footer>span{font-size:13px}.dialog-footer .text-button{font-size:15px}
+#study-panel .trace-caption{font-size:14px!important;line-height:1.7}.atlas-demo .demo-action,.atlas-demo select{font-size:15px}.atlas-demo label,.atlas-demo legend{font-size:16px}.demo-code{font-size:14px}.atlas-demo .demo-feedback{font-size:15px}
+/* A proper closed passport: a rigid cover rotates around the spine to reveal the pages. */
+.passport-book{perspective:2000px;min-height:550px}
+.passport-cover-shell{position:absolute;inset:0;z-index:8;perspective:1800px;background:var(--bg);border-radius:0 0 20px 20px;display:grid;place-items:center;overflow:clip}
+.passport-cover{position:absolute;top:30px;bottom:30px;left:50%;width:42%;max-width:440px;transform-origin:left center;transform-style:preserve-3d;background:transparent;border:0;padding:0;text-align:center;color:var(--mint);border-radius:8px 24px 24px 8px;cursor:pointer;box-shadow:12px 12px 0 var(--line),18px 24px 50px var(--bg)}
+.passport-cover-shell:not(.cover-opening) .passport-cover{left:29%}
+.cover-front,.cover-back{position:absolute;inset:0;backface-visibility:hidden;border:2px solid var(--mint);border-left:12px solid var(--line);border-radius:8px 24px 24px 8px;background:var(--panel);display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:30px 20px;box-shadow:inset 0 0 0 6px var(--panel),inset 0 0 0 7px var(--line)}
+.cover-front::before{content:"";position:absolute;inset:16px;border:1px solid var(--line);border-radius:2px 10px 10px 2px;pointer-events:none}
+.cover-front strong{font:clamp(32px,4vw,53px)/1.05 var(--serif);letter-spacing:-.04em}.cover-edition{font:10px var(--mono);letter-spacing:.12em}.cover-monogram{font:italic 43px var(--serif);color:var(--coral)}.cover-compass{font-size:48px;line-height:1}.cover-owner{font-size:15px}.cover-invitation{font-size:14px;font-weight:600;border-top:1px solid var(--line);padding-top:16px;width:85%}
+.cover-back{transform:rotateY(180deg);background:var(--surface-soft);color:var(--muted);justify-content:center;gap:25px;font-size:14px;border-right:10px solid var(--line);border-left:2px solid var(--mint)}
+.cover-opening{background:transparent;pointer-events:none;overflow:visible}.cover-opening .passport-cover{box-shadow:none}
+.book-closed .passport-endpaper,.book-closed .timeline{visibility:hidden}
+.close-passport{position:absolute;bottom:14px;left:20px;z-index:6;background:transparent;color:var(--paper);font-size:14px;min-height:44px;padding:8px 12px;border:1px solid var(--line);border-radius:24px}
+.passport-endpaper{padding-bottom:70px}.book-brief{display:none}
+.passport-ready:not(.passport-all) .timeline .experience-detail,.passport-ready:not(.passport-all) .timeline article>p:not([class]){display:none}
+.passport-ready:not(.passport-all) .book-brief{display:block}
+.book-brief p{font-size:16px;line-height:1.85;color:var(--muted);margin:0 0 20px}
+.passport-all .experience-detail summary{display:none}.passport-all .experience-detail{border:0;background:transparent;padding:0}.passport-all .experience-detail-body{padding-top:0}
+.journey-section:not(.passport-ready) .book-brief{display:none}
+@media(hover:hover){.passport-cover-shell:not(.cover-opening) .passport-cover:hover{transform:rotateY(-12deg);transition:transform 400ms ease}}
+@media(max-width:680px){.study-tabs{gap:12px;padding-inline:22px;grid-template-columns:repeat(3,minmax(0,1fr))}.study-tabs button{font-size:15px;min-height:64px;padding:10px 0;text-align:left}#study-panel,#study-panel p,#study-panel li,#study-panel .decision-list p:last-child{font-size:16px!important}#study-panel h3{font-size:24px}#study-panel h4,#study-panel .decision-list h3{font-size:20px!important}.dialog-header>p{font-size:15px}.dialog-header .tags span{font-size:12px}.dialog-top .eyebrow{font-size:11px}.dialog-footer>span{font-size:12px}}
+@media(max-width:600px){.passport-book{min-height:520px}.passport-cover,.passport-cover-shell:not(.cover-opening) .passport-cover{left:10%;width:80%;top:22px;bottom:22px;max-width:none}.cover-opening .passport-cover{left:10%}.cover-edition{font-size:10px}.cover-front strong{font-size:43px}.cover-invitation{font-size:14px}.cover-monogram{font-size:40px}.close-passport{position:relative;bottom:auto;left:auto;grid-column:1/-1;order:5;margin:0 20px 20px}.passport-endpaper{padding-bottom:22px}.book-brief p{font-size:16px}.passport-all .passport-book{min-height:0}}
+@media(prefers-reduced-motion:reduce){.passport-cover{transform:none!important;transition:none!important}}
+.reduce-motion .passport-cover{transform:none!important;transition:none!important}
+[data-high-contrast=true] .cover-front,[data-high-contrast=true] .cover-back{border-color:var(--paper);box-shadow:none}
+@media(forced-colors:active){.cover-front,.cover-back{border-color:CanvasText;color:CanvasText;box-shadow:none;background:Canvas}.passport-cover{box-shadow:none}.cover-front::before{display:none}}
+@media print{.passport-cover-shell,.close-passport{display:none!important}.book-closed .timeline,.book-closed .passport-endpaper{visibility:visible}.passport-book{min-height:0}}
+@media(min-width:601px){.passport-cover-shell:not(.cover-opening) .passport-cover{left:50%}.passport-cover-shell:not(.cover-opening)::before{content:"A career in chapters.\A Open the passport to explore\A the places and work along the way.";white-space:pre-line;position:absolute;left:5%;width:38%;font:20px/1.9 var(--serif);color:var(--muted);text-align:center}}
+@media print{.passport-ready .timeline .book-brief{display:none!important}.passport-ready .timeline .experience-detail,.passport-ready .timeline article>p:not([class]){display:block!important}.experience-detail summary{display:none!important}}
+
+.book-turn-front p:last-child{white-space:pre-line}
+/* Both directions use the current page as the outgoing leaf. The real content
+   remains untouched until completion, including the stamp and page counter. */
+.passport-ready:not(.passport-all) .passport-book .timeline{touch-action:pan-y;cursor:grab}
+.passport-ready:not(.passport-all) .passport-book .timeline.is-dragging{cursor:grabbing;user-select:none;-webkit-user-select:none}
+.book-gesture-hint{font-size:14px;color:var(--muted);margin-top:16px}
+.book-turn-sheet,.book-incoming-page{position:absolute;inset:0;border-radius:0 0 20px 0;pointer-events:none;backface-visibility:hidden}
+.book-turn-sheet{z-index:5;transform-style:flat;will-change:transform}
+.book-incoming-page{z-index:4;background:var(--surface-soft)}
+.book-page-face{position:absolute;inset:0;padding:38px 32px;background:var(--surface-soft);border-radius:inherit;overflow:hidden;box-shadow:inset 12px 0 20px color-mix(in srgb,var(--bg) 9%,transparent)}
+.book-turn-sheet .book-page-face::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--bg) 25%,transparent));opacity:var(--turn-shade,0)}
+.book-page-face>.timeline-date{font:11px var(--mono);color:var(--mint);letter-spacing:.08em;margin:0 0 22px}
+.book-page-face>h3{font-size:36px;line-height:1.2;letter-spacing:-.025em;margin:0 0 12px;font-weight:500}
+.book-page-face>.timeline-role{font-size:15px;color:var(--paper);margin:0 0 20px}
+.book-page-face .book-brief{display:block}.book-page-face .book-brief p{font-size:16px;line-height:1.85;margin:0 0 20px;color:var(--muted)}
+.is-turning>article{pointer-events:none}
+@media(max-width:800px){.book-page-face{padding:32px 25px}}
+@media(max-width:600px){.book-page-face{padding:28px 22px}.book-page-face>h3{font-size:30px}.book-page-face>.timeline-date{font-size:9px;line-height:1.8;max-width:82%}.book-page-face>.timeline-role{font-size:13px}.book-gesture-hint{font-size:13px}}
+@media(prefers-reduced-motion:reduce){.book-turn-sheet,.book-incoming-page{display:none}}
+.reduce-motion .book-turn-sheet,.reduce-motion .book-incoming-page{display:none}
+@media(forced-colors:active){.book-turn-sheet,.book-incoming-page{display:none}}
+@media print{.book-gesture-hint,.book-incoming-page{display:none!important}}
