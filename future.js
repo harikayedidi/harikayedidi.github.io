@@ -2,6 +2,41 @@
   'use strict';
   const root = document.documentElement;
   const reduced = () => root.classList.contains('reduce-motion') || matchMedia('(prefers-reduced-motion: reduce)').matches || matchMedia('(forced-colors: active)').matches;
+  const nameStage = document.querySelector('.hero-copy');
+  let spotlightTimer;
+  function lightName(event) {
+    if (reduced() || root.dataset.highContrast === 'true') return;
+    if (event.target.closest('a,button,input,select')) return;
+    const box = nameStage.getBoundingClientRect();
+    const x = Math.max(0,Math.min(1,(event.clientX-box.left)/box.width));
+    const y = Math.max(0,Math.min(1,(event.clientY-box.top)/box.height));
+    nameStage.style.setProperty('--spot-x', `${x*100}%`);
+    nameStage.style.setProperty('--spot-y', `${y*100}%`);
+    nameStage.style.setProperty('--name-x', `${(0.5-y)*4}deg`);
+    nameStage.style.setProperty('--name-y', `${(x-0.5)*4}deg`);
+    nameStage.classList.add('spotlight-on');
+  }
+  function restName() {
+    nameStage.classList.remove('spotlight-on');
+    ['--name-x','--name-y'].forEach(key=>nameStage.style.removeProperty(key));
+  }
+  nameStage.addEventListener('pointermove', event=>{ if(event.pointerType==='mouse' && matchMedia('(hover:hover)').matches) lightName(event); });
+  nameStage.addEventListener('pointerdown', event=>{ if(event.pointerType!=='mouse'){ lightName(event); clearTimeout(spotlightTimer); spotlightTimer=setTimeout(restName,900); } });
+  nameStage.addEventListener('pointerleave',restName);
+  nameStage.addEventListener('pointercancel',restName);
+  document.querySelectorAll('.site-header nav, .appearance-inner').forEach(menu => {
+    let menuTimer;
+    function lightMenu(event) {
+      if (reduced() || root.dataset.highContrast === 'true') return;
+      const box = menu.getBoundingClientRect();
+      menu.style.setProperty('--menu-x', `${event.clientX-box.left}px`);
+      menu.style.setProperty('--menu-y', `${event.clientY-box.top}px`);
+      menu.classList.add('menu-lit');
+    }
+    menu.addEventListener('pointermove', event=>{ if(event.pointerType==='mouse')lightMenu(event); });
+    menu.addEventListener('pointerdown', event=>{lightMenu(event);clearTimeout(menuTimer);menuTimer=setTimeout(()=>menu.classList.remove('menu-lit'),900);});
+    ['pointerleave','pointercancel'].forEach(event=>menu.addEventListener(event,()=>menu.classList.remove('menu-lit')));
+  });
   // Pointer tilt is decorative; all actions remain native buttons.
   document.querySelectorAll('.work-card').forEach(card => {
     const reset = () => ['--tilt-x','--tilt-y','--shine-x','--shine-y'].forEach(name => card.style.removeProperty(name));
@@ -19,6 +54,19 @@
     card.addEventListener('pointercancel', reset);
   });
   const section = document.querySelector('#journey');
+  const backToTop = document.getElementById('back-to-top');
+  let scrollFrame = 0;
+  function updateBackToTop() {
+    scrollFrame = 0;
+    backToTop.hidden = section.getBoundingClientRect().top > window.innerHeight * .75;
+  }
+  window.addEventListener('scroll', () => {
+    if (!scrollFrame) scrollFrame = requestAnimationFrame(updateBackToTop);
+  }, {passive:true});
+  window.addEventListener('resize', updateBackToTop);
+  window.addEventListener('load', updateBackToTop);
+  updateBackToTop();
+
   const consolePanel = section.querySelector('.passport-console');
   const buttons = [...section.querySelectorAll('[data-passport]')];
   const articles = buttons.map(button => document.getElementById(`journey-${button.dataset.passport}`));
@@ -137,7 +185,8 @@
     current.animation = animation;
     animation.onfinish = finish;
   }
-  let index = 0, mode = 'explore', renderedOrder = 'explore';
+  const mobileCareer = matchMedia('(max-width: 760px)');
+  let index = 0, mode = mobileCareer.matches ? 'all' : 'explore', renderedOrder = 'explore';
   function render() {
     if (renderedOrder !== mode) {
       const order = mode === 'all' ? [...articles].reverse() : articles;
@@ -151,7 +200,7 @@
     document.getElementById('book-city').textContent = buttons[index].querySelector('strong').textContent;
     document.getElementById('book-year').textContent = buttons[index].querySelector('.route-index').textContent.split('/')[1].trim();
     document.getElementById('book-folio').textContent = `${String(index + 1).padStart(2, '0')} / 05`;
-    buttons.forEach((button, i) => button.setAttribute('aria-pressed', String(i === index)));
+    buttons.forEach((button, i) => { if (mode === 'all') button.removeAttribute('aria-pressed'); else button.setAttribute('aria-pressed', String(i === index)); });
     articles.forEach((article, i) => { article.hidden = mode === 'explore' && i !== index; });
     section.classList.toggle('passport-all', mode === 'all');
     section.querySelectorAll('[data-career-mode]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.careerMode === mode)));
@@ -215,7 +264,7 @@
   articles.forEach(article => { article.tabIndex = 0; });
   timeline.tabIndex = 0;
   timeline.setAttribute('role','group');
-  timeline.setAttribute('aria-label','Career passport pages. Drag left or right, or use the arrow keys to change chapters.');
+  timeline.setAttribute('aria-label','Work and education');
   timeline.addEventListener('keydown', event => {
     if (event.key === 'Escape' && transaction) { event.preventDefault(); cancelTurn(); return; }
     if ((event.target !== timeline && !articles.includes(event.target)) || !bookOpen || mode !== 'explore') return;
@@ -225,7 +274,7 @@
   });
   buttons.forEach((button, i) => button.addEventListener('click', () => {
     select(i);
-    if (mode === 'all') articles[i].scrollIntoView({behavior:reduced() ? 'instant' : 'smooth',block:'start'});
+    if (mode === 'all') { articles[i].scrollIntoView({behavior:reduced() ? 'instant' : 'smooth',block:'start'}); articles[i].focus({preventScroll:true}); }
   }));
   section.querySelectorAll('[data-career-mode]').forEach(button => button.addEventListener('click', () => {
     cancelTurn(); finishCover(); mode = button.dataset.careerMode;
@@ -245,21 +294,26 @@
     if (link && !link.hasAttribute('data-location')) revealHash(link.getAttribute('href'));
   });
   window.addEventListener('hashchange', () => revealHash(location.hash));
-  const widthControl = document.getElementById('lab-viewport');
-  const labPreview = document.getElementById('lab-preview');
-  const setPreviewWidth = () => {
-    const mobile = widthControl.value === 'mobile';
-    labPreview.classList.toggle('lab-mobile', mobile);
-    labPreview.querySelector('.lab-version').textContent = mobile ? 'mobile / 320px' : 'sandbox / 01';
-  };
-  widthControl.addEventListener('change', setPreviewWidth);
-  document.getElementById('reset-lab').addEventListener('click', () => { widthControl.value = 'responsive'; setPreviewWidth(); });
   const motionObserver = new MutationObserver(() => { if (reduced()) { cancelTurn(); finishCover(); } });
   motionObserver.observe(root, {attributes:true,attributeFilter:['class']});
   matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', () => { if (reduced()) { cancelTurn(); finishCover(); } });
+  function syncCareerViewport() {
+    cancelTurn(); finishCover();
+    section.classList.toggle('mobile-resume', mobileCareer.matches);
+    mode = mobileCareer.matches ? 'all' : 'explore';
+    index = mobileCareer.matches ? articles.length - 1 : 0;
+    bookOpen = false;
+    articles.forEach(article => { article.querySelector('details').open = true; article.tabIndex = -1; });
+    timeline.tabIndex = mobileCareer.matches ? -1 : 0;
+    consolePanel.querySelector('.passport-caption').textContent = mobileCareer.matches ? 'Jump to a role or school' : 'Choose a chapter';
+    buttons.forEach(button => { button.querySelector('strong').textContent = mobileCareer.matches ? button.querySelector('span:last-child').textContent : {india:'Hyderabad','new-york':'New York',lincoln:'Lincoln',viome:'Bellevue',microsoft:'Redmond'}[button.dataset.passport]; });
+    render();
+  }
+  mobileCareer.addEventListener('change', syncCareerViewport);
   section.classList.add('passport-ready');
   consolePanel.hidden = false;
   coverShell.hidden = false;
+  syncCareerViewport();
   revealHash(location.hash);
   render();
 })();
