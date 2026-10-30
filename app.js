@@ -87,11 +87,6 @@
     ]
   }
 };
-  const ownerPrompts = {
-    systems: 'Add how many teams used this work, what was painful before, and one component API example you can share.',
-    motion: 'Add the reproduction steps for the rapid-navigation flicker, how you verified the fix, and any result you can share.',
-    agents: 'Add who uses these checks and a sanitized example of something they caught, including what the developer changed.'
-  };
   const order = Object.keys(studies);
   const dialog = $('#study-dialog');
   let fallbackDialog = false;
@@ -120,7 +115,7 @@
     });
     const panel = $('#study-panel');
     panel.setAttribute('aria-labelledby', `study-tab-${tab}`);
-    if (tab === 'overview') panel.innerHTML = study.overview + `<aside class="owner-content-note"><h4>A detail I still need to add</h4><p>${ownerPrompts[activeStudy]}</p></aside>`;
+    if (tab === 'overview') panel.innerHTML = study.overview;
     else if (tab === 'demo') { panel.innerHTML = demoMarkup(activeStudy); bindDemo(activeStudy, panel); }
     else panel.innerHTML = `<h3>The choices I made.</h3><div class="decision-list">${study.decisions.map(([title, explanation]) => `<article><h3>${escapeHtml(title)}</h3><p>${escapeHtml(explanation)}</p></article>`).join('')}</div>`;
   }
