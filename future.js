@@ -12,8 +12,6 @@
     const y = Math.max(0,Math.min(1,(event.clientY-box.top)/box.height));
     nameStage.style.setProperty('--spot-x', `${x*100}%`);
     nameStage.style.setProperty('--spot-y', `${y*100}%`);
-    nameStage.style.setProperty('--name-x', `${(0.5-y)*4}deg`);
-    nameStage.style.setProperty('--name-y', `${(x-0.5)*4}deg`);
     nameStage.classList.add('spotlight-on');
   }
   function restName() {
@@ -54,6 +52,7 @@
     card.addEventListener('pointercancel', reset);
   });
   const section = document.querySelector('#journey');
+  if (!section) return;
   const backToTop = document.getElementById('back-to-top');
   let scrollFrame = 0;
   function updateBackToTop() {

@@ -1,0 +1,23 @@
+/* Portfolio and About share themes, motion preferences, and navigation. */
+.site-header nav a[aria-current=page]{color:var(--paper);text-decoration:underline;text-underline-offset:7px;text-decoration-thickness:2px}
+.home-hero{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:56px;align-items:center;padding-block:56px 72px}
+.home-hero .journey-map{margin:0;min-width:0;width:100%}.home-hero .geographic-atlas{transform:none}
+.home-hero .hero-copy{padding:36px 0}.home-hero .hero-copy::after{display:block}.home-hero .eyebrow{margin:0;color:var(--mint);font-size:14px}
+.home-hero #hero-title{font-family:var(--sans);font-weight:500;text-shadow:none;transform:none;transition:none;font-size:clamp(38px,4.6vw,72px);letter-spacing:-.045em;white-space:nowrap;line-height:1.2;margin:18px 0 32px}
+.home-hero .hero-actions{margin:0;gap:12px}.home-hero .hero-actions .button{font-size:16px;min-height:48px}.home-hero .atlas-edition{display:none}
+.about-page{max-width:1200px;margin:auto}.about-page-intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 64px;padding-top:48px;padding-bottom:80px}
+.about-page-heading{align-self:center}.about-page-heading .text-button{font-size:16px;margin-bottom:42px}.about-page-heading .eyebrow{margin:0 0 16px}
+.about-page-heading h1{font-size:clamp(40px,5vw,68px);font-family:var(--sans);font-weight:500;line-height:1.2;letter-spacing:-.04em}
+.about-page .hero-art{width:100%;margin:0}.about-page .hero-art img{width:100%;margin:0;max-width:100%}
+.about-story{grid-column:1/-1;width:100%;max-width:740px;margin:16px auto 0;padding:0;isolation:isolate}
+.about-story::before,.about-story::after{display:none}.about-story .hero-bio{max-width:none;background:transparent}.about-story .hero-bio p{font-size:18px;line-height:1.85;margin:0 0 28px;color:var(--muted)}
+.about-story .hero-actions{margin-top:36px;gap:16px}.about-page .hero-copy{background:transparent}
+@media(max-width:1050px){.home-hero{grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:28px}.home-hero #hero-title{font-size:clamp(32px,4.4vw,48px);white-space:normal}}
+@media(max-width:820px){.home-hero{grid-template-columns:1fr;gap:32px;padding-top:32px}.home-hero .hero-copy{padding:12px 0}.home-hero #hero-title{font-size:clamp(38px,8.2vw,64px);white-space:nowrap}.home-hero .journey-map{max-width:700px}.about-page-intro{gap:28px;padding-block:32px 56px}.about-page-heading .text-button{margin-bottom:24px}.about-page-heading h1{font-size:42px}}
+@media(max-width:760px){.site-header nav{grid-template-columns:repeat(6,minmax(0,1fr))}.site-header nav a,.site-header nav a:nth-last-child(-n+2){grid-column:span 2;white-space:normal}.home-hero{padding-inline:5%;padding-bottom:40px}.home-hero .hero-actions{flex-wrap:wrap}.home-hero .hero-actions .button{font-size:16px;padding:12px 16px}.about-page-intro{display:flex;flex-direction:column;padding-inline:6%;gap:24px}.about-page-heading{align-self:stretch}.about-page .hero-art{max-width:440px;align-self:center}.about-story{margin:0 auto}.about-story .hero-bio p{font-size:18px;line-height:1.8}.about-page-heading h1{font-size:40px}.about-story .hero-actions{flex-wrap:wrap;margin-top:28px}.about-page .hero-art img{animation-duration:11s}}
+@media(max-width:340px){.home-hero #hero-title{font-size:37px;white-space:normal}.site-header nav a{font-size:14px}}
+@media(forced-colors:active){.about-page-intro{display:block}.about-story{margin-top:36px}}
+
+/* Restore the static geometric texture behind the simple name. */
+[data-high-contrast=true] .home-hero .hero-copy::after{display:none}
+@media(forced-colors:active){.home-hero .hero-copy::after{display:none}}

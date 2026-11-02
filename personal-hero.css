@@ -1,0 +1,42 @@
+/* Personal illustration shares the page's semantic theme background. */
+.site-header{gap:20px}.site-header nav{gap:14px}.site-header nav a{white-space:nowrap}
+.personal-hero{position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);align-items:center;gap:36px;max-width:1480px;margin:auto;padding:48px 5% 76px;overflow:clip}
+.hero-art{position:relative;min-width:0;align-self:center;isolation:isolate}
+.hero-art::before{content:"";position:absolute;inset:10%;z-index:-1;border-radius:50%;background:radial-gradient(ellipse,color-mix(in srgb,var(--mint) 15%,transparent),transparent 72%);filter:blur(30px);pointer-events:none}
+.hero-art img{display:block;width:115%;max-width:none;height:auto;margin-left:-9%;filter:drop-shadow(0 22px 32px color-mix(in srgb,var(--bg) 28%,transparent))}
+.personal-hero .hero-copy{padding:20px 0;min-width:0;background:var(--bg);border-radius:24px}
+.personal-hero .hero-copy::before{inset:-20px;opacity:.35;background:radial-gradient(circle 180px at var(--spot-x,45%) var(--spot-y,40%),color-mix(in srgb,var(--mint) 12%,transparent),transparent 100%)}
+.personal-hero .hero-copy::after{display:none}
+.personal-hero .hero-copy .eyebrow{margin:0;color:var(--mint);font-size:14px}
+.personal-hero #hero-title{font-size:clamp(38px,4.5vw,70px);margin:14px 0 28px;line-height:1.2;white-space:nowrap;letter-spacing:-.05em;text-shadow:none;transform:none;transition:none;font-family:var(--sans);font-weight:500}
+.hero-bio{position:relative;z-index:1;max-width:57ch;background:var(--bg)}
+.hero-bio p{font-size:16px;line-height:1.8;color:var(--muted);margin:0 0 18px}
+.personal-hero .hero-actions{margin-top:28px;gap:12px}.personal-hero .hero-actions .button{font-size:16px;min-height:48px}
+.work-life{border-top:1px solid var(--line);grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:40px 64px}
+.work-life h2{font-size:clamp(34px,4.2vw,58px);margin:16px 0 28px;line-height:1.15}
+.work-life .profile-intro>p:not(.eyebrow){font-size:16px;line-height:1.8;margin:0 0 20px}
+.work-life .profile-focus{align-self:start;margin-top:50px}.work-life .profile-focus h3{font-size:24px}
+.work-reading{margin-top:24px}.work-reading .reader-note{font-size:14px;line-height:1.6}
+.work-life .capability-strip{grid-column:1/-1;justify-content:flex-start;padding:24px 0 0;border-bottom:0;background:transparent}
+.journey-map{max-width:900px;margin:40px auto 48px;min-width:0}.journey-map .geographic-atlas{transform:none;box-shadow:0 18px 50px color-mix(in srgb,var(--bg) 45%,transparent)}
+.reader-mode .personal-hero{display:block;max-width:950px;padding:40px 5%}.reader-mode .hero-art{display:none}.reader-mode .personal-hero .hero-copy{padding:0}.reader-mode .personal-hero #hero-title{font-size:48px}.reader-mode .hero-bio{max-width:70ch}
+[data-high-contrast=true] .hero-art::before{display:none}[data-high-contrast=true] .hero-art img{filter:none}[data-high-contrast=true] .personal-hero #hero-title,[data-high-contrast=true] .personal-hero #hero-title em{text-shadow:none}
+@media(min-width:761px) and (max-width:1150px){.site-header{display:grid;grid-template-columns:1fr auto}.site-header nav{grid-column:1/-1;grid-row:2;justify-content:center;gap:24px}.site-header .header-contact{grid-column:2;grid-row:1}.personal-hero{gap:20px}.personal-hero #hero-title{font-size:clamp(36px,4.5vw,52px)}}
+@media(max-width:820px){.personal-hero{display:flex;flex-direction:column;gap:0;padding:24px 6% 48px}.personal-hero .hero-art{width:min(100%,540px);margin:0 auto -10px}.hero-art img{width:100%;margin:0}.personal-hero .hero-copy{width:100%;max-width:640px;padding:12px 0 0}.personal-hero #hero-title{font-size:clamp(38px,8vw,62px)}.hero-bio{max-width:none}.work-life{grid-template-columns:1fr;gap:28px}.work-life .profile-focus{margin-top:0}.work-life .capability-strip{grid-column:1}}
+@media(max-width:760px){.site-header{display:grid;grid-template-columns:minmax(0,1fr) auto;padding:20px 5% 12px;gap:16px 8px}.site-header .brand{font-size:14px;gap:10px}.site-header .header-contact{font-size:14px;grid-column:2;grid-row:1}.site-header nav{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-column:1/-1;grid-row:2;gap:4px 8px;width:100%}.site-header nav a,.site-header nav a:nth-child(3){grid-column:span 2;display:flex;align-items:center;justify-content:center;text-align:center;white-space:nowrap;min-height:44px;padding:8px 0;font-size:14px;line-height:1.5}.site-header nav a:nth-last-child(-n+2){grid-column:span 3}.personal-hero .hero-art{max-width:460px}.personal-hero .hero-actions{flex-wrap:wrap}.personal-hero .hero-actions .button{flex:1 1 150px;padding:12px}.journey-map{margin:28px auto 36px}.work-life{padding-block:48px}.personal-hero .hero-bio p{font-size:16px}.reader-mode .personal-hero #hero-title{font-size:38px}}
+@media(max-width:340px){.personal-hero #hero-title{white-space:normal;font-size:40px}.site-header .header-contact{gap:6px}}
+@media(forced-colors:active){.hero-art{display:none}.personal-hero{display:block;max-width:850px}.personal-hero #hero-title,.personal-hero #hero-title em{text-shadow:none}.personal-hero .hero-copy,.hero-bio{background:Canvas}}
+@media print{.hero-art,.work-reading{display:none}.personal-hero{display:block}.hero-bio{max-width:none}.personal-hero .hero-copy,.hero-bio{background:white}}
+
+/* A quiet storybook drift: original artwork, gentle light, native controls. */
+.hero-art img{transform-origin:50% 65%;animation:atlas-story-drift 9s ease-in-out infinite;will-change:transform}
+.hero-art::before{animation:atlas-story-light 11s ease-in-out infinite}
+@keyframes atlas-story-drift{0%,100%{transform:translateY(0) rotate(-.25deg)}50%{transform:translateY(-7px) rotate(.25deg)}}
+@keyframes atlas-story-light{0%,100%{opacity:.4;transform:scale(.96)}50%{opacity:.75;transform:scale(1.04)}}
+.top-atlas{border-top:1px solid var(--line);padding-top:44px;padding-bottom:52px}.top-atlas-heading{display:flex;align-items:end;justify-content:space-between;gap:24px;max-width:900px;margin:auto}.top-atlas h2{font-size:clamp(32px,3.6vw,48px);margin-top:12px}.top-atlas .journey-map{margin:28px auto 0}.top-atlas .geographic-atlas{border-radius:22px}.top-atlas .atlas-edition{display:none}
+.appearance-bar{position:sticky;top:0;z-index:15}
+.reduce-motion .hero-art img,.reduce-motion .hero-art::before{animation:none!important;transform:none!important;will-change:auto}
+[data-high-contrast=true] .hero-art img{animation:none;transform:none;will-change:auto}
+@media(prefers-reduced-motion:reduce){.hero-art img,.hero-art::before{animation:none!important;transform:none!important;will-change:auto}}
+@media(forced-colors:active){.hero-art img,.hero-art::before{animation:none!important}}
+@media(max-width:760px){.top-atlas-heading{display:block}.top-atlas-heading>.text-button{margin-top:14px}.top-atlas{padding-top:32px;padding-bottom:36px}}
