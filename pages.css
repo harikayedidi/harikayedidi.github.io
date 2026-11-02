@@ -21,3 +21,13 @@
 /* Restore the static geometric texture behind the simple name. */
 [data-high-contrast=true] .home-hero .hero-copy::after{display:none}
 @media(forced-colors:active){.home-hero .hero-copy::after{display:none}}
+
+/* Pin navigation alone; appearance controls remain in document flow. */
+.site-chrome{position:sticky;top:0;z-index:15;background:color-mix(in srgb,var(--bg) 96%,transparent);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}
+.site-chrome .site-header{position:relative;background:transparent}
+.appearance-bar{position:relative;top:auto}
+html{scroll-padding-top:calc(var(--site-chrome-height,110px) + 16px)}
+main section[id],.timeline article[id]{scroll-margin-top:16px!important}
+[data-high-contrast=true] .site-chrome{background:var(--bg);-webkit-backdrop-filter:none;backdrop-filter:none}
+@media(forced-colors:active){.site-chrome{background:Canvas;-webkit-backdrop-filter:none;backdrop-filter:none}}
+@media print{.site-chrome{position:static;-webkit-backdrop-filter:none;backdrop-filter:none}}

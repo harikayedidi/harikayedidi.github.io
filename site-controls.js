@@ -1,6 +1,14 @@
 (() => {
   'use strict';
   const $ = selector => document.querySelector(selector);
+  const chrome = $('.site-chrome');
+  function updateChromeHeight() {
+    document.documentElement.style.setProperty('--site-chrome-height', `${Math.ceil(chrome.getBoundingClientRect().height)}px`);
+  }
+  if (chrome) {
+    updateChromeHeight();
+    new ResizeObserver(updateChromeHeight).observe(chrome);
+  }
   const appearance = window.AtlasAppearance;
   const themeSelect = $('#site-theme');
   const contrastControl = $('#site-contrast');
