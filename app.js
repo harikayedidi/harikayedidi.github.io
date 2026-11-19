@@ -32,33 +32,6 @@
       ]
     ]
   },
-  "motion": {
-    "coordinate": "Interaction",
-    "title": "Fixing focus, input, and animation bugs.",
-    "summary": "I fixed flicker during fast navigation when animations and inline style updates got out of sync. I synchronized the transition and style updates.",
-    "tags": [
-      "Accessibility",
-      "Motion",
-      "Input handling",
-      "Reduced motion",
-      "Reliability"
-    ],
-    "overview": "<h3>Input bugs in shared controls</h3><p>I worked on the interaction foundations used by shared controls in the Xbox Design System. The fixes included duplicate activation, keyboard-handler issues, screen-reader announcements, focus, and disabled states.</p><p>I kept activation separate from animation so visual feedback did not cause an action to fire twice. That distinction mattered across pointer, keyboard, and controller input.</p><h4>Flicker during fast navigation</h4><p>In our shared motion infrastructure, an animation could finish before its inline styles had caught up. During fast navigation, that mismatch caused flicker. I synchronized the transition and style updates and worked on more reliable animation lifecycle handling.</p><p>The broader motion work included browser-native animation and lazy loading. I also built reduced-motion support into the shared behavior so the final state still made sense with animation turned off.</p><h4>What I had to preserve</h4><p>A fix to input or motion still needed to leave focus, screen-reader feedback, and the final visual state correct. I worked on those together rather than treating animation as a separate finishing step.</p>",
-    "decisions": [
-      [
-        "Keep activation and animation separate",
-        "I separated the action from its visual feedback so different input paths would not trigger it more than once."
-      ],
-      [
-        "Build in reduced motion",
-        "I treated reduced motion as part of the shared interaction behavior, so it did not depend on each consumer adding its own fallback."
-      ],
-      [
-        "Animation completion and style updates",
-        "I worked on animation completion and lifecycle handling so rapid navigation would not leave the interface in an inconsistent visual state."
-      ]
-    ]
-  },
   "agents": {
     "coordinate": "Developer tools",
     "title": "MCP checks for component issues.",
@@ -124,7 +97,6 @@
     const note = '<p class="trace-caption">I made this example for the portfolio. It uses sample data.</p>';
     if (id === 'agents') return `<div class="atlas-demo"><h3>Try a semantic-token check</h3><p>Choose a token for a destructive action and optionally provide the component state. See which checks pass, which flag an issue, and which need more information.</p><label for="demo-token">Background token</label><select id="demo-token"><option value="success">color.background.success</option><option value="danger">color.background.danger</option><option value="unknown">Unspecified token</option></select><label class="demo-check"><input id="demo-state" type="checkbox" checked> State specification available</label><button type="button" class="demo-action" id="demo-validate">Validate composition</button><div id="demo-result" class="demo-result" role="status" aria-live="polite"></div>${note}</div>`;
     if (id === 'systems') return `<div class="atlas-demo"><h3>Compose a component</h3><p>Choose which parts the card includes. The preview and component structure update together. Add an action, then try selecting the destination.</p><label for="demo-layout">Preview size</label><select id="demo-layout"><option value="wide">Desktop</option><option value="mobile">Mobile · 280px</option></select><label class="demo-check"><input type="checkbox" id="demo-image" checked> Include image slot</label><label class="demo-check"><input type="checkbox" id="demo-meta" checked> Include metadata slot</label><label class="demo-check"><input type="checkbox" id="demo-action-slot"> Include action slot</label><div class="demo-result demo-component" id="demo-composition" aria-live="polite"></div><pre class="demo-code" id="demo-api" aria-label="Illustrative component composition"></pre><p id="demo-action-status" class="demo-feedback" role="status"></p>${note}</div>`;
-    return `<div class="atlas-demo"><h3>One action, multiple inputs</h3><p>Activate the button with a pointer, Enter, or Space. The native button emits one activation event for each action. Motion respects your system preference and the control below.</p><fieldset class="interaction-controls"><legend>Preview a state · works on touch too</legend><div class="demo-state-buttons"><button type="button" class="demo-action" data-preview-state="rest" aria-pressed="true">Rest</button><button type="button" class="demo-action" data-preview-state="hover" aria-pressed="false">Hover</button><button type="button" class="demo-action" data-preview-state="press" aria-pressed="false">Press</button><button type="button" class="demo-action" data-preview-state="disabled" aria-pressed="false">Disabled</button></div></fieldset><label for="demo-viewport">Preview size</label><select id="demo-viewport"><option value="wide">Desktop</option><option value="mobile">Mobile · 280px</option></select><label for="demo-speed">Animation timing</label><select id="demo-speed"><option value="180">Quick · 180ms</option><option value="350" selected>Balanced · 350ms</option><option value="700">Slow · 700ms</option></select><label class="demo-check"><input type="checkbox" id="demo-reduce"> Reduce motion in this demo</label><div class="demo-device" id="demo-device"><span class="demo-device-label">Destination preview</span><button type="button" class="demo-action interaction-target" id="demo-activate">Save destination</button><p id="demo-state-label">Rest · ready to activate</p></div><div id="demo-motion-result" class="demo-result" role="status" aria-live="polite">Saved 0 times</div><div class="demo-track" aria-hidden="true"><span id="demo-dot" class="demo-dot"></span></div><section class="kinetic-lab" aria-labelledby="kinetic-title"><h4 id="kinetic-title">Press and save a card</h4><p>Press and hold the whole card, then release. Try Tab, Enter, or Space too. Saving only happens on activation.</p><label for="card-scale">Press scale <output id="card-scale-value">0.96</output></label><input id="card-scale" type="range" min="90" max="99" value="96"><label for="card-easing">Release feel</label><select id="card-easing"><option value="spring">Spring</option><option value="smooth">Smooth</option><option value="snappy">Snappy</option></select><button type="button" class="demo-action" id="card-press-preview" aria-pressed="false">Preview held press</button><div class="kinetic-stage"><button type="button" id="kinetic-card" class="kinetic-card" aria-pressed="false"><span class="kinetic-landscape" aria-hidden="true"><span class="kinetic-planet"></span><span class="kinetic-ridge"></span><span class="kinetic-ridge ridge-back"></span><span class="kinetic-coordinates">47.61° N / 122.33° W</span></span><span class="kinetic-card-copy"><span class="eyebrow">Sample destination</span><strong>Sample mountain stop</strong><span>Press to save this imaginary stop.</span><span class="kinetic-save">Save destination ↗</span></span></button></div><p id="kinetic-feedback" role="status">Not saved yet. Give it a press.</p><p class="trace-caption">The scale changes while held; the release follows the easing you choose. Reduced motion keeps the state feedback and removes the movement.</p></section>${note}</div>`;
   }
   function bindDemo(id, panel) {
     if (id === 'agents') {
@@ -144,75 +116,10 @@
       };
       panel.querySelectorAll('input').forEach(el => el.addEventListener('change', render));
       panel.querySelector('#demo-layout').addEventListener('change', e => panel.querySelector('#demo-composition').classList.toggle('demo-mobile', e.target.value === 'mobile')); render();
-    } else {
-      let count = 0;
-      const button = panel.querySelector('#demo-activate');
-      const reduce = panel.querySelector('#demo-reduce');
-      reduce.checked = document.documentElement.classList.contains('reduce-motion') || window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const syncMotion = () => {
-        const reduced = reduce.checked || document.documentElement.classList.contains('reduce-motion') || window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        const duration = reduced ? '0ms' : panel.querySelector('#demo-speed').value + 'ms';
-        panel.querySelector('#demo-dot').style.transitionDuration = duration;
-        button.style.transitionDuration = duration;
-        panel.querySelector('.kinetic-lab').classList.toggle('demo-reduced', reduced);
-      };
-      reduce.addEventListener('change', syncMotion);
-      panel.querySelector('#demo-speed').addEventListener('change', syncMotion);
-      panel.querySelector('#demo-viewport').addEventListener('change', e => panel.querySelector('#demo-device').classList.toggle('demo-mobile', e.target.value === 'mobile'));
-      panel.querySelectorAll('[data-preview-state]').forEach(control => control.addEventListener('click', () => {
-        const state = control.dataset.previewState;
-        panel.querySelectorAll('[data-preview-state]').forEach(el => el.setAttribute('aria-pressed', String(el === control)));
-        button.dataset.state = state;
-        button.disabled = state === 'disabled';
-        panel.querySelector('#demo-state-label').textContent = {rest: 'Rest · ready to activate', hover: 'Hover · a little lift and emphasis', press: 'Press · immediate visual feedback', disabled: 'Disabled · no activation'}[state];
-      }));
-      const kinetic = panel.querySelector('#kinetic-card');
-      const scale = panel.querySelector('#card-scale');
-      scale.addEventListener('input', () => {
-        const value = (Number(scale.value) / 100).toFixed(2);
-        panel.querySelector('#card-scale-value').textContent = value;
-        kinetic.style.setProperty('--press-scale', value);
-      });
-      panel.querySelector('#card-easing').addEventListener('change', e => {
-        const curves = {spring: 'cubic-bezier(.2,1.7,.4,1)', smooth: 'cubic-bezier(.25,.1,.25,1)', snappy: 'cubic-bezier(.2,.8,.2,1)'};
-        kinetic.style.setProperty('--release-ease', curves[e.target.value]);
-      });
-      panel.querySelector('#card-press-preview').addEventListener('click', e => {
-        const pressed = e.currentTarget.getAttribute('aria-pressed') !== 'true';
-        e.currentTarget.setAttribute('aria-pressed', String(pressed));
-        kinetic.classList.toggle('preview-pressed', pressed);
-      });
-      kinetic.addEventListener('click', () => {
-        const saved = kinetic.getAttribute('aria-pressed') !== 'true';
-        kinetic.setAttribute('aria-pressed', String(saved));
-        kinetic.querySelector('.kinetic-save').textContent = saved ? 'Saved ✓' : 'Save destination ↗';
-        panel.querySelector('#kinetic-feedback').textContent = saved ? 'Destination saved. Press again to remove it.' : 'Destination removed from your saved stops.';
-      });
-      // Put the usable control first, including on touch screens.
-      const primary = document.createElement('section');
-      primary.className = 'motion-primary';
-      primary.setAttribute('aria-label','Try the button');
-      primary.append(panel.querySelector('#demo-device'), panel.querySelector('#demo-motion-result'), panel.querySelector('.demo-track'));
-      panel.querySelector('.atlas-demo > p').after(primary);
-      const press = () => { if (!button.disabled) button.classList.add('is-held'); };
-      const release = () => button.classList.remove('is-held');
-      button.addEventListener('pointerdown', press);
-      ['pointerup','pointercancel','pointerleave','blur'].forEach(event => button.addEventListener(event, release));
-      kinetic.addEventListener('pointerdown', () => kinetic.classList.add('is-held'));
-      ['pointerup','pointercancel','pointerleave','blur'].forEach(event => kinetic.addEventListener(event, () => kinetic.classList.remove('is-held')));
-      syncMotion();
-      button.addEventListener('click', () => {
-        count++;
-        panel.querySelector('#demo-motion-result').textContent = `Saved ${count} ${count === 1 ? 'time' : 'times'}. Each tap or key activation counts once.`;
-        const dot = panel.querySelector('#demo-dot');
-        const reduced = panel.querySelector('#demo-reduce').checked || window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        dot.classList.toggle('demo-dot-end', count % 2 === 1);
-        syncMotion();
-      });
     }
   }
   function updateProgress() {
-    $('#study-reading-status').textContent = `${visited.size} / 3 case studies opened`;
+    $('#study-reading-status').textContent = `${visited.size} / ${order.length} case studies opened`;
   }
   function setHash(hash) {
     // Embedded browsers may restrict history writes; content must still open.
@@ -235,7 +142,7 @@
     document.body.classList.remove('dialog-open');
     if (location.hash.startsWith('#case-')) setHash(returnHash);
     if (returnFocus && returnFocus !== document.body) returnFocus.focus();
-    if (visited.size === order.length) announce('You’ve opened all three case studies.');
+    if (visited.size === order.length) announce('You’ve opened both case studies.');
   }
   function closeStudy() {
     if (fallbackDialog) {
@@ -373,10 +280,10 @@
   const initialChapter = location.hash.match(/^#journey-(india|new-york|lincoln|viome|microsoft)$/);
   if (initialChapter) selectLocation(initialChapter[1]);
   window.addEventListener('hashchange', () => {
-    const match = location.hash.match(/^#case-(systems|motion|agents)$/);
+    const match = location.hash.match(/^#case-(systems|agents)$/);
     if (match) openStudy(match[1]);
     else if (dialog.open) closeStudy();
   });
-  const initial = location.hash.match(/^#case-(systems|motion|agents)$/);
+  const initial = location.hash.match(/^#case-(systems|agents)$/);
   if (initial) openStudy(initial[1]);
 })();

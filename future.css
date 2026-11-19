@@ -12,7 +12,7 @@
 .atlas-top{background:var(--surface-raised)}.atlas-bottom{border-top:1px solid var(--line)}
 .capability-strip{border-block:1px solid var(--line);background:var(--panel)}
 .section-heading h2,.journey-intro h2{font-size:clamp(38px,4.6vw,65px)}
-.work-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;perspective:1600px;align-items:stretch}
+.work-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;perspective:1600px;align-items:stretch}
 .work-card{display:flex;flex-direction:column;position:relative;min-width:0;overflow:visible;border-radius:22px;background:var(--panel);box-shadow:0 10px 0 color-mix(in srgb,var(--line) 17%,transparent),0 18px 35px color-mix(in srgb,var(--bg) 65%,transparent);transform:perspective(1000px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg)) translateY(var(--lift,0px));transition:transform 230ms ease,box-shadow 230ms ease;transform-style:preserve-3d}
 .work-card::after{content:"";position:absolute;inset:0;border:1px solid var(--line);border-radius:inherit;pointer-events:none;background:radial-gradient(circle at var(--shine-x,30%) var(--shine-y,10%),color-mix(in srgb,var(--paper) 8%,transparent),transparent 48%)}
 .work-card:focus-within{--lift:-6px;outline:2px solid var(--gold);outline-offset:5px}
